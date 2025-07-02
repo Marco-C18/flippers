@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Clases</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-4">
+
+        <!-- Título y botones alineados a la izquierda -->
+        <div class="mb-3">
+            <h2>Listado de Clases</h2>
+            <div class="btn-group mt-2" role="group">
+                <a href="/admin/menu" class="btn btn-outline-primary">Volver Admin</a>
+            </div>
+        </div>
+
+        <!-- Formulario para agregar clase -->
+        <div class="card mb-4">
+            <div class="card-header">Crear Nueva Clase</div>
+            <div class="card-body">
+                <form th:action="@{/admin/clases/crear}" method="post">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Título</label>
+                            <input type="text" class="form-control" name="titleClass" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Contenido</label>
+                            <input type="text" class="form-control" name="contentClass" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Edad Mínima</label>
+                            <input type="number" class="form-control" name="ageMinClass" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Edad Máxima</label>
+                            <input type="number" class="form-control" name="ageMaxClass" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Precio</label>
+                            <input type="number" step="0.01" class="form-control" name="priceClass" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Duración (min)</label>
+                            <input type="number" class="form-control" name="durationClass" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Modalidad</label>
+                            <select class="form-select" name="modeClass" required>
+                                <option value="Presencial">Infantil</option>
+                                <option value="Virtual">Adulto</option>
+                                <option value="Mixto">Terapéutico</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success">Agregar Clase</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabla de clases -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover bg-white">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Contenido</th>
+                        <th>Edad</th>
+                        <th>Precio</th>
+                        <th>Duración</th>
+                        <th>Modalidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="clase : ${clases}">
+                        <td th:text="${clase.idClass}"></td>
+                        <td th:text="${clase.titleClass}"></td>
+                        <td th:text="${clase.contentClass}"></td>
+                        <td>
+                            <span th:text="${clase.ageMinClass}"></span> -
+                            <span th:text="${clase.ageMaxClass}"></span>
+                        </td>
+                        <td th:text="${clase.priceClass}"></td>
+                        <td th:text="${clase.durationClass} + ' min'"></td>
+                        <td th:text="${clase.modeClass}"></td>
+                        <td>
+                            <a th:href="@{/admin/clases/editar/{id}(id=${clase.idClass})}"
+                                class="btn btn-sm btn-primary">Editar</a>
+                            <a th:href="@{/admin/clases/eliminar/{id}(id=${clase.idClass})}"
+                                class="btn btn-sm btn-danger"
+                                onclick="return confirm('¿Estás seguro de eliminar esta clase?')">Eliminar</a>
+
+                            <!-- Memento -->
+                            <a th:href="@{/admin/clases/restaurar/{id}(id=${clase.idClass})}"
+                                class="btn btn-sm btn-warning"
+                                onclick="return confirm('¿Deseas restaurar la versión anterior de esta clase?')">Restaurar</a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

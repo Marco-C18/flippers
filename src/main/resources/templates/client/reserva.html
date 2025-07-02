@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reservar Clase</title>
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+
+<body>
+    <div th:replace="~{fragments/header :: cabecera}"></div>
+
+    <h2>Reservar Clase</h2>
+
+    <form method="post" action="/reserva">
+        <label for="clase">Clase:</label>
+        <select name="idClase" required>
+            <option value="" disabled selected>Selecciona una clase</option>
+            <option th:each="clase : ${clases}" th:value="${clase.idClass}" th:text="${clase.titleClass}">
+            </option>
+        </select>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" name="fecha" required>
+
+        <label for="hora">Hora:</label>
+        <select name="hora" required>
+            <option value="14:00-15:00">2:00 PM - 3:00 PM</option>
+            <option value="17:00-18:00">5:00 PM - 6:00 PM</option>
+        </select>
+
+        <button type="submit">Reservar</button>
+    </form>
+
+    <p th:if="${mensaje}" th:text="${mensaje}"></p>
+    <p th:if="${error}" th:text="${error}"></p>
+</body>
+
+</html>

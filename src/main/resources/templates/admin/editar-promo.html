@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Promoción</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="p-4">
+
+    <div class="container">
+        <h2>Editar Promoción</h2>
+        <form th:action="@{'/admin/promos/editar/' + ${promo.idPromo}}" th:object="${promo}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input type="text" th:field="*{titlePromo}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <input type="text" th:field="*{descriptionPromo}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">% Descuento</label>
+                <input type="number" step="0.01" th:field="*{discountPercent}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Clase asociada</label>
+                <select th:field="*{classModel.idClass}" class="form-select" required>
+                    <option th:each="clase : ${clases}" th:value="${clase.idClass}" th:text="${clase.titleClass}">
+                    </option>
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Guardar cambios</button>
+            <a href="/admin/promos" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+
+</body>
+
+</html>

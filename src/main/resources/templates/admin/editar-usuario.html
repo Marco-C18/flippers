@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+    <h2>Editar Usuario</h2>
+
+    <form th:action="@{'/admin/usuario/editar/' + ${usuario.idUsuario}}" th:object="${usuario}" method="post">
+        <div class="mb-3">
+            <label for="nombreUsuario" class="form-label">Nombre</label>
+            <input type="text" th:field="*{nombreUsuario}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="emailUsuario" class="form-label">Email</label>
+            <input type="email" th:field="*{emailUsuario}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="telefonoUsuario" class="form-label">Teléfono</label>
+            <input type="text" th:field="*{telefonoUsuario}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="contraseñaUsuario" class="form-label">Contraseña</label>
+            <input type="password" th:field="*{contraseñaUsuario}" class="form-control" placeholder="Ingrese nueva contraseña">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="/admin/usuario" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+</body>
+</html>

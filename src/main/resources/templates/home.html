@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <title>Inicio</title>
+</head>
+
+<body>
+
+    <div th:replace="~{fragments/header :: cabecera}"></div>
+
+    <section class="banner">
+        <img src="/img/banner.png" alt="Banner" class="banner-img" />
+        <div class="banner-content">
+            <h1>Bienvenido a Flippers</h1>
+            <p>Descubre nuestros servicios y promociones de natación.</p>
+            <button>Conoce más</button>
+        </div>
+    </section>
+
+    <section class="clases">
+        <h2>Tipos de Clases</h2>
+
+        <div class="clases-container">
+            <div th:each="class : ${classModels}" class="clase-card">
+                <h3 th:text="${class.titleClass}">Principiantes</h3>
+                <p th:text="${class.contentClass}">Clases diseñadas para quienes están iniciando en la natación. Aprende
+                    técnicas básicas y gana
+                    confianza en el agua.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>Flippers</h3>
+                <p>Ofrecemos clases para todos los niveles, con entrenadores certificados y espacios seguros para
+                    aprender y mejorar tus habilidades.</p>
+            </div>
+            <div class="footer-section links">
+                <h4>Enlaces útiles</h4>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="/usuario">Registro</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contacto</h4>
+                <p>Email: contacto@flippers.com</p>
+                <p>Teléfono: +51 987 654 321</p>
+                <p>Dirección: Av. Natación 123, Ciudad</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Flippers Natación. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

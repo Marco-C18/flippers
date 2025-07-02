@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+
+<body>
+    <nav th:fragment="cabecera" class="flippers-nav">
+        <a href="#" class="logo">
+            <img src="img/logo.png" alt="Logo" />
+        </a>
+
+        <ul class="menu">
+            <li><a href="/">Inicio</a></li>
+            <li th:if="${session.usuarioLogueado == null}"><a href="/register">Registro</a></li>
+            <li th:if="${session.usuarioLogueado != null}"><a href="/reserva">Reservar</a></li>
+            <li th:if="${session.usuarioLogueado != null}"><a href="/mis-reservas">Mis Reservas</a></li>
+            <li th:if="${session.usuarioLogueado == null}"><a href="/login">Iniciar sesión</a></li>
+            <li th:if="${session.usuarioLogueado != null}"><a href="/logout">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgba(151, 151, 151, 0.03);
+  scroll-behavior: smooth;
+  margin-top: 70px;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+.flippers-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  background: rgba(7, 100, 160, 0.95);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  padding: 0 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.flippers-nav:hover {
+  background: rgba(7, 100, 160, 1);
+}
+
+.flippers-nav .logo img {
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+.flippers-nav .logo img:hover {
+  transform: scale(1.1);
+}
+
+.flippers-nav .menu {
+  display: flex;
+  gap: 20px;
+}
+
+.flippers-nav .menu li a {
+  padding: 10px 16px;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.flippers-nav .menu li a:hover {
+  background-color: #ffcc00;
+  color: #073b60;
+}
