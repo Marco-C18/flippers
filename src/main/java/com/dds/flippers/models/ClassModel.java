@@ -1,6 +1,7 @@
 package com.dds.flippers.models;
 
 import com.dds.flippers.memento.ClassMemento;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 
@@ -9,6 +10,7 @@ import jakarta.persistence.*;
 public class ClassModel {
 
     @OneToOne(mappedBy = "classModel", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private PromoModel promoModel;
 
     public PromoModel getPromoModel() {

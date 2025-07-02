@@ -1,6 +1,8 @@
 
 package com.dds.flippers.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class PromoModel {
 
     @OneToOne
     @JoinColumn(name = "id_class") // FK hacia la clase
+    @JsonBackReference
     private ClassModel classModel;
 
     @Id
