@@ -63,9 +63,14 @@ public class UserController {
 
     // Vista CRUD usuarios - VER
     @GetMapping("/admin/usuario")
-    public String showAdminUserInteface(Model model) {
-        model.addAttribute("usuarioModels", userService.getAllUsers());
-        return "admin/usuario";
+    public String showAdminUserInteface(HttpSession session, Model model) {
+    Boolean adminLogueado = (Boolean) session.getAttribute("adminLogueado");
+    if (adminLogueado == null || !adminLogueado) {
+        return "redirect:/admin/login";
+    }
+
+    model.addAttribute("usuarioModels", userService.getAllUsers());
+    return "admin/usuario";
     }
 
     // Vista CRUD usuarios - ELIMINAR
