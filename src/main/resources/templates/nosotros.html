@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Flippers</title>
+    <link rel="stylesheet" href="/css/nosotros.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div th:replace="~{fragments/header :: cabecera}"></div>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Conoce a Flippers</h1>
+            <p>Tu escuela de natación de confianza. Formación, seguridad y pasión por el agua.</p>
+        </div>
+    </section>
+
+    <section class="intro historia-imagen-lado">
+        <div class="texto">
+            <h2>¿Quiénes somos?</h2>
+            <p>Somos una escuela de natación dedicada a enseñar con pasión, profesionalismo y cariño. En Flippers,
+                transformamos el miedo al agua en confianza y diversión.</p>
+        </div>
+        <div class="imagen">
+            <img src="/img/quienes-somos.png" alt="Niños nadando">
+        </div>
+    </section>
+
+    <section class="historia historia-imagen-lado reverse">
+        <div class="imagen">
+            <img src="/img/historia.png" alt="Primera clase Flippers">
+        </div>
+        <div class="texto">
+            <h2>Nuestra Historia</h2>
+            <p>Desde el 2015, comenzamos con un pequeño grupo de niños y un sueño: enseñar natación con calidad y
+                valores. Hoy, más de 3000 alumnos han pasado por nuestras piscinas, aprendiendo con alegría y seguridad.
+            </p>
+        </div>
+    </section>
+
+    <section class="mision-vision">
+        <div class="box">
+            <i class="fas fa-bullseye icon"></i>
+            <h3>Misión</h3>
+            <p>Enseñar natación de forma segura, divertida y profesional, promoviendo el desarrollo integral de niños,
+                jóvenes y adultos.</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-eye icon"></i>
+            <h3>Visión</h3>
+            <p>Ser la escuela de natación más valorada del país, por nuestra excelencia educativa, compromiso y calidad
+                humana.</p>
+        </div>
+    </section>
+
+    <section class="equipo">
+        <h2>Nuestro Equipo</h2>
+        <div class="miembros">
+            <div class="miembro">
+                <img src="/img/juan.png" alt="Juan Pérez">
+                <h4>Juan Pérez</h4>
+                <p>Entrenador jefe y fundador. 15 años de experiencia, especialista en técnicas avanzadas.</p>
+            </div>
+            <div class="miembro">
+                <img src="/img/carla.png" alt="Carla Ruiz">
+                <h4>Carla Ruiz</h4>
+                <p>Encargada de clases infantiles. Creativa, paciente y certificada en primeros auxilios.</p>
+            </div>
+            <div class="miembro">
+                <img src="/img/luis.png" alt="Luis Torres">
+                <h4>Luis Torres</h4>
+                <p>Coach juvenil y competidor nacional. Motiva con energía y disciplina.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="diferencia">
+        <h2>¿Qué nos hace diferentes?</h2>
+        <div class="diferencias">
+            <div>
+                <i class="fas fa-swimmer icon"></i>
+                <p>Clases adaptadas a cada edad y nivel</p>
+            </div>
+            <div>
+                <i class="fas fa-medal icon"></i>
+                <p>Entrenadores certificados y con experiencia</p>
+            </div>
+            <div>
+                <i class="fas fa-water icon"></i>
+                <p>Instalaciones seguras, limpias y modernas</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacto">
+        <h2>Contáctanos</h2>
+        <p><i class="fas fa-envelope"></i> contacto@flippers.com</p>
+        <p><i class="fas fa-phone"></i> +51 987 654 321</p>
+        <p><i class="fas fa-map-marker-alt"></i> Av. Natación 123, Lima, Perú</p>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.877650050521!2d-77.04279308459416!3d-12.123334745942954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c81d41f7fffd%3A0x4fefbdfb1fdcbd79!2sCosta%20Verde%2C%20Lima!5e0!3m2!1ses-419!2spe!4v1687658394971!5m2!1ses-419!2spe"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <a href="https://www.google.com/maps/place/Costa+Verde,+Lima/" target="_blank" class="btn-mapa">
+                Ver en Google Maps
+            </a>
+        </div>
+
+        <div class="redes">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

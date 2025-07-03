@@ -48,10 +48,10 @@ a {
 
 .banner-content p {
   font-size: 1.1rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-.banner-content button {
+.banner-content .button {
   padding: 12px 25px;
   font-size: 1rem;
   background-color: #ffcc00;
@@ -63,7 +63,7 @@ a {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.banner-content button:hover {
+.banner-content .button:hover {
   background-color: #ff9d00;
   transform: scale(1.05);
 }
@@ -71,12 +71,13 @@ a {
 .clases {
   padding: 60px 20px;
   background-color: #f0f4f8;
-  text-align: center;
+  text-align: start;
 }
 .clases h2 {
   font-size: 2.2rem;
   margin-bottom: 40px;
   color: rgb(7, 100, 160);
+  text-align: center;
 }
 
 .clases-container {
@@ -93,12 +94,23 @@ a {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   max-width: 300px;
   flex: 1 1 280px;
+  border: 2px solid rgb(7, 100, 160);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .clase-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.clase-card .up-values {
+  display: flex;
+  align-items: center;
+}
+
+.clase-card .up-values i {
+  color: #073b60;
+  margin-right: 10px;
 }
 
 .clase-card h3 {
@@ -111,6 +123,11 @@ a {
   font-size: 1rem;
   color: #555;
   line-height: 1.5;
+}
+
+.clase-card .down-values {
+  display: flex;
+  justify-content: space-between;
 }
 
 footer {
