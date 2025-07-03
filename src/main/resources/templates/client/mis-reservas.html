@@ -5,12 +5,27 @@
     <meta charset="UTF-8">
     <title>Mis Reservas</title>
     <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/mis-reservas.css">
 </head>
 
 <body>
     <div th:replace="~{fragments/header :: cabecera}"></div>
 
-    <h1>Mis Reservas</h1>
+    <main class="pagina-reservas">
+        <div class="reservas">
+            <h1>Mis Reservas</h1>
+            <ul class="reservas-lista">
+                <li th:each="reserva : ${reservas}">
+                    Usuario: <span th:text="${reserva.usuario.nombreUsuario}"></span> |
+                    Clase: <span th:text="${reserva.clase.titleClass}"></span> |
+                    DÃa: <span th:text="${reserva.dia}"></span> |
+                    Hora: <span th:text="${reserva.hora}"></span>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- <h1>Mis Reservas</h1>
 
     <ul>
         <li th:each="reserva : ${reservas}">
@@ -19,7 +34,7 @@
             Día: <span th:text="${reserva.dia}"></span> |
             Hora: <span th:text="${reserva.hora}"></span>
         </li>
-    </ul>
+    </ul> -->
 </body>
 
 </html>

@@ -1,0 +1,60 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Aplica solo al contenido de la página de reservas */
+.pagina-reservas {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f9ff;
+  color: #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo solo dentro de la sección .reservas */
+.reservas h1 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #0077cc;
+}
+
+.reservas .reservas-lista {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 10px;
+}
+
+.reservas .reservas-lista li {
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.reservas .reservas-lista li span {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .reservas h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .reservas .reservas-lista li {
+    font-size: 0.95rem;
+    padding: 15px;
+  }
+}
