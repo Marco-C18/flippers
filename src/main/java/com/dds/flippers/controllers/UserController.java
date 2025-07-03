@@ -24,6 +24,11 @@ public class UserController {
         return "client/register";
     }
 
+    @GetMapping("/nosotros")
+    public String showNosotros() {
+        return "client/nosotros";
+    }
+
     // Crear nuevo usuario
     @PostMapping("/register")
     public String createUser(@ModelAttribute UserModel userModel) {
