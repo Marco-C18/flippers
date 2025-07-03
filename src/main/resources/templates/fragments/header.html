@@ -17,6 +17,7 @@
             <li th:if="${session.usuarioLogueado != null}"><a href="/reserva">Reservar</a></li>
             <li th:if="${session.usuarioLogueado != null}"><a href="/mis-reservas">Mis Reservas</a></li>
             <li th:if="${session.usuarioLogueado == null}"><a href="/login">Iniciar sesión</a></li>
+            <li th:if="${session.usuarioLogueado == null}"><a href="/nosotros">Nosotros</a></li>
             <li th:if="${session.usuarioLogueado != null}"><a href="/logout">Cerrar sesión</a></li>
         </ul>
     </nav>
