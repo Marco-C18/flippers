@@ -130,6 +130,68 @@ a {
   justify-content: space-between;
 }
 
+.promo-section {
+  padding: 2rem;
+  background-color: #f1f5f9;
+  text-align: center;
+}
+
+.promo-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #075985;
+  margin-bottom: 1.5rem;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem; /* espacio reducido entre tarjetas */
+  justify-items: center;
+}
+
+.promo-card {
+  background-color: white;
+  border: 2px solid #0284c7;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.promo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.promo-discount {
+  background-color: #0284c7;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-weight: 800;
+  font-size: 1.3rem;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+}
+
+.promo-description {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0c4a6e;
+  margin-bottom: 0.3rem;
+}
+
+.promo-class {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
 footer {
   background-color: rgb(7, 100, 160);
   color: white;

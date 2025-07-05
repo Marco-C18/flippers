@@ -7,4 +7,8 @@ import com.dds.flippers.model.UserModel;
 public interface UserRepository extends JpaRepository<UserModel, Integer> {
     UserModel findByNombreUsuario(String nombreUsuario);
 
+    UserModel findByEmailUsuario(String emailUsuario);
+
+    UserModel findByTelefonoUsuario(String telefonoUsuario);
+
 }

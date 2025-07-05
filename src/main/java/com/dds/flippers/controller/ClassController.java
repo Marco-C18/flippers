@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 
 import com.dds.flippers.model.ClassModel;
 import com.dds.flippers.service.ClassService;
+import com.dds.flippers.service.PromoService;
 import com.dds.flippers.view.ViewRoutes;
 
 import jakarta.servlet.http.HttpSession;
@@ -20,10 +21,14 @@ public class ClassController {
     @Autowired
     private ClassService classService;
 
+    @Autowired
+    private PromoService promoService;
+
     // Vista HOME
     @GetMapping("/")
     public String showHome(Model model) {
         model.addAttribute("classModels", classService.getAllClasses());
+        model.addAttribute("promos", promoService.getAllPromos());
         return ViewRoutes.HOME;
     }
 

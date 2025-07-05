@@ -108,6 +108,15 @@ a:hover {
   background-color: #0090cc;
 }
 
+.error-message {
+  background-color: #ffe0e0;
+  color: #cc0000;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 @media screen and (max-width: 1050px) {
   .background-container {
     display: none;

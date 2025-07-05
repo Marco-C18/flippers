@@ -46,6 +46,51 @@
   color: #333;
 }
 
+.promo-aplicada {
+  color: #cc8800;
+  font-style: italic;
+  margin-left: 8px;
+}
+
+.monto-final {
+  color: #007f00;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+/* Contenedor general de la reserva */
+.contenido-reserva {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.btn-eliminar {
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.btn-eliminar::before {
+  content: "🗑️";
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.btn-eliminar:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .reservas h1 {

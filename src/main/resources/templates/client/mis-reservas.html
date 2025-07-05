@@ -20,21 +20,24 @@
                     Clase: <span th:text="${reserva.clase.titleClass}"></span> |
                     Día: <span th:text="${reserva.dia}"></span> |
                     Hora: <span th:text="${reserva.hora}"></span>
+
+                    <div th:if="${reserva.promocion != null}">
+                        | Promoción: <span th:text="${reserva.promocion.titlePromo}"></span>
+                        (<span th:text="${reserva.promocion.discountPercent}"></span>% de descuento)
+                    </div>
+
+                    | Monto Final: S/. <span th:text="${reserva.montoFinal}"></span>
+
+                    <form th:action="@{/reserva/eliminar}" method="post" class="form-eliminar">
+                        <input type="hidden" name="id" th:value="${reserva.idReserva}" />
+                        <button type="submit" onclick="return confirm('¿Estás seguro de eliminar esta reserva?')">
+                            ✖️ Eliminar Reserva
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>
     </main>
-
-    <!-- <h1>Mis Reservas</h1>
-
-    <ul>
-        <li th:each="reserva : ${reservas}">
-            Usuario: <span th:text="${reserva.usuario.nombreUsuario}"></span> |
-            Clase: <span th:text="${reserva.clase.titleClass}"></span> |
-            Día: <span th:text="${reserva.dia}"></span> |
-            Hora: <span th:text="${reserva.hora}"></span>
-        </li>
-    </ul> -->
 </body>
 
 </html>

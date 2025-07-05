@@ -83,6 +83,11 @@ p {
   text-align: center;
 }
 
+select[name="idPromocion"] {
+  background-color: #f0f8ff;
+  font-style: italic;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   form {

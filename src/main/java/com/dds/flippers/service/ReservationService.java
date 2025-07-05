@@ -41,4 +41,12 @@ public class ReservationService {
     public List<ReservationModel> getReservationByUser(UserModel usuario) {
         return reservationRepository.findByUsuario(usuario);
     }
+
+    public ReservationModel getReservationById(Integer id) {
+        return reservationRepository.findById(id).orElse(null);
+    }
+
+    public void deleteReservation(Integer id) {
+        reservationRepository.deleteById(id);
+    }
 }

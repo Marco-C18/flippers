@@ -11,17 +11,22 @@ public class ReservationModel {
     private Integer idReserva;
 
     @ManyToOne
-    @JoinColumn(name = "idClase") 
+    @JoinColumn(name = "idClase")
     private ClassModel clase;
 
     private String dia;
     private String hora;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario") 
+    @JoinColumn(name = "idUsuario")
     private UserModel usuario;
 
-    
+    @ManyToOne
+    @JoinColumn(name = "idPromo", nullable = true)
+    private PromoModel promocion;
+
+    private Double montoFinal;
+
     public Integer getIdReserva() {
         return idReserva;
     }
@@ -60,5 +65,21 @@ public class ReservationModel {
 
     public void setUsuario(UserModel usuario) {
         this.usuario = usuario;
+    }
+
+    public PromoModel getPromocion() {
+        return promocion;
+    }
+
+    public void setPromocion(PromoModel promocion) {
+        this.promocion = promocion;
+    }
+
+    public Double getMontoFinal() {
+        return montoFinal;
+    }
+
+    public void setMontoFinal(Double montoFinal) {
+        this.montoFinal = montoFinal;
     }
 }

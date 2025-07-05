@@ -26,7 +26,22 @@ public class UserController {
 
     // Crear nuevo usuario
     @PostMapping("/register")
-    public String createUser(@ModelAttribute UserModel userModel) {
+    public String createUser(@ModelAttribute UserModel userModel, Model model) {
+        if (userService.existsByNombreUsuario(userModel.getNombreUsuario())) {
+            model.addAttribute("error", "El nombre de usuario ya está en uso.");
+            return "client/register";
+        }
+
+        if (userService.existsByEmailUsuario(userModel.getEmailUsuario())) {
+            model.addAttribute("error", "El correo ya está registrado.");
+            return "client/register";
+        }
+
+        if (userService.existsByTelefonoUsuario(userModel.getTelefonoUsuario())) {
+            model.addAttribute("error", "El número de teléfono ya está registrado.");
+            return "client/register";
+        }
+
         userService.saveUser(userModel);
         return "redirect:/";
     }
@@ -64,13 +79,13 @@ public class UserController {
     // Vista CRUD usuarios - VER
     @GetMapping("/admin/usuario")
     public String showAdminUserInteface(HttpSession session, Model model) {
-    Boolean adminLogueado = (Boolean) session.getAttribute("adminLogueado");
-    if (adminLogueado == null || !adminLogueado) {
-        return "redirect:/admin/login";
-    }
+        Boolean adminLogueado = (Boolean) session.getAttribute("adminLogueado");
+        if (adminLogueado == null || !adminLogueado) {
+            return "redirect:/admin/login";
+        }
 
-    model.addAttribute("usuarioModels", userService.getAllUsers());
-    return "admin/usuario";
+        model.addAttribute("usuarioModels", userService.getAllUsers());
+        return "admin/usuario";
     }
 
     // Vista CRUD usuarios - ELIMINAR

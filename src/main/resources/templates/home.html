@@ -44,6 +44,20 @@
         </div>
     </section>
 
+    <section class="promo-section">
+        <h2 class="promo-title">Promociones Activas</h2>
+        <div class="promo-grid" th:if="${promos != null}">
+            <div class="promo-card" th:each="promo : ${promos}">
+                <h3 class="promo-discount">-[[${promo.discountPercent}]]%</h3>
+                <h4 class="promo-name">[[${promo.titlePromo}]]</h4>
+                <p class="promo-description">[[${promo.descriptionPromo}]]</p>
+                <div class="promo-class">
+                    Clase: <span>[[${promo.classModel.titleClass}]]</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section about">

@@ -6,6 +6,7 @@
     <title>Reservar Clase</title>
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/reserva.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body>
@@ -15,14 +16,14 @@
 
     <form method="post" action="/reserva">
         <label for="clase">Clase:</label>
-        <select name="idClase" required>
+        <select name="idClase" id="clase" required>
             <option value="" disabled selected>Selecciona una clase</option>
             <option th:each="clase : ${clases}" th:value="${clase.idClass}" th:text="${clase.titleClass}">
             </option>
         </select>
 
         <label for="fecha">Fecha:</label>
-        <input type="date" name="fecha" required>
+        <input type="text" name="fecha" id="fecha" required placeholder="Selecciona una fecha">
 
         <label for="hora">Hora:</label>
         <select name="hora" required>
@@ -30,11 +31,59 @@
             <option value="17:00-18:00">5:00 PM - 6:00 PM</option>
         </select>
 
+        <label for="idPromocion">Promoción:</label>
+        <select name="idPromocion">
+            <option value="" selected>Sin promoción</option>
+            <option th:each="promo : ${promociones}" th:value="${promo.idPromo}"
+                th:text="${promo.titlePromo + ' - ' + promo.discountPercent + '%'}">
+            </option>
+        </select>
+
         <button type="submit">Reservar</button>
     </form>
 
     <p th:if="${mensaje}" th:text="${mensaje}"></p>
     <p th:if="${error}" th:text="${error}"></p>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        const diasPorClase = {
+            '1': [1, 3], // Básica: Lunes y Miércoles
+            '2': [2, 4], // Intermedia: Martes y Jueves
+            '3': [5, 6]  // Avanzada: Viernes y Sábado
+        };
+
+        const fechaInput = document.querySelector('input[name="fecha"]');
+        const claseSelect = document.querySelector('select[name="idClase"]');
+        let flatpickrInstance;
+
+        function actualizarFechasDisponibles(diasPermitidos) {
+            if (flatpickrInstance) flatpickrInstance.destroy();
+            flatpickrInstance = flatpickr(fechaInput, {
+                minDate: "today",
+                dateFormat: "Y-m-d",
+                disable: [
+                    function (date) {
+                        return !diasPermitidos.includes(date.getDay());
+                    }
+                ]
+            });
+        }
+
+        claseSelect.addEventListener('change', function () {
+            const claseId = this.value;
+            const dias = diasPorClase[claseId];
+            if (dias) {
+                actualizarFechasDisponibles(dias);
+            }
+        });
+
+        flatpickrInstance = flatpickr(fechaInput, {
+            minDate: "today",
+            dateFormat: "Y-m-d"
+        });
+    </script>
 </body>
 
 </html>

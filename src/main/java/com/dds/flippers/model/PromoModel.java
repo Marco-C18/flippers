@@ -77,5 +77,4 @@ public class PromoModel {
     public void setClassModel(ClassModel classModel) {
         this.classModel = classModel;
     }
-
 }
