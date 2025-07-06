@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import com.dds.flippers.model.UserModel;
+import com.dds.flippers.service.ReservationService;
 import com.dds.flippers.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -17,6 +18,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ReservationService reservationService;
 
     // Vista para registrar usuario
     @GetMapping("/register")
@@ -91,6 +95,8 @@ public class UserController {
     // Vista CRUD usuarios - ELIMINAR
     @GetMapping("/admin/usuario/eliminar/{id}")
     public String deleteUser(@PathVariable Integer id) {
+
+        reservationService.deleteReservationsByUserId(id);
         userService.deleteUserById(id);
         return "redirect:/admin/usuario";
     }
@@ -100,7 +106,7 @@ public class UserController {
     public String showAdminUserEditInterface(@PathVariable Integer id, Model model) {
         UserModel usuario = userService.getUserById(id);
         model.addAttribute("usuario", usuario);
-        return "/admin/editar-usuario";
+        return "admin/editar-usuario";
     }
 
     // Vista CRUD usuarios - EJECUTAR EDITAR

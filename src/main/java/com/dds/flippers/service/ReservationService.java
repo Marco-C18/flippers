@@ -11,6 +11,8 @@ import com.dds.flippers.model.UserModel;
 import com.dds.flippers.repository.ClassRepository;
 import com.dds.flippers.repository.ReservationRepository;
 
+import org.springframework.transaction.annotation.Transactional;
+
 @Service
 public class ReservationService {
     @Autowired
@@ -18,6 +20,10 @@ public class ReservationService {
 
     @Autowired
     private ReservationRepository reservationRepository;
+
+    public List<ReservationModel> getAllReservation() {
+        return reservationRepository.findAll();
+    }
 
     public void saveReservation(ReservationModel reserva) {
         reservationRepository.save(reserva);
@@ -48,5 +54,12 @@ public class ReservationService {
 
     public void deleteReservation(Integer id) {
         reservationRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void deleteReservationsByUserId(Integer userId) {
+        UserModel usuario = new UserModel();
+        usuario.setIdUsuario(userId);
+        reservationRepository.deleteByUsuario(usuario);
     }
 }

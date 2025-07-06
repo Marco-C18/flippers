@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<ReservationModel, Integer> {
     List<ReservationModel> findByUsuario(UserModel usuario);
+
+    void deleteByUsuario(UserModel usuario);
 }

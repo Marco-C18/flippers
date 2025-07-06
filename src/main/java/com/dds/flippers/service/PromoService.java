@@ -2,11 +2,13 @@ package com.dds.flippers.service;
 
 import com.dds.flippers.model.ClassModel;
 import com.dds.flippers.model.PromoModel;
+import com.dds.flippers.model.UserModel;
 import com.dds.flippers.repository.ClassRepository;
 import com.dds.flippers.repository.PromoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -55,5 +57,12 @@ public class PromoService {
 
         promoRepository.save(promo);
         promoRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void deletePromoByClassId(Integer classId) {
+        ClassModel classV = new ClassModel();
+        classV.setIdClass(classId);
+        promoRepository.deleteByClassModel(classV);
     }
 }

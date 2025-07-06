@@ -79,6 +79,7 @@ public class ClassController {
     // Vista CRUD clases - ELIMINAR
     @GetMapping("/admin/clases/eliminar/{id}")
     public String deleteClass(@PathVariable Integer id) {
+        promoService.deletePromoByClassId(id);
         classService.deleteClass(id);
         return "redirect:/admin/clases";
     }

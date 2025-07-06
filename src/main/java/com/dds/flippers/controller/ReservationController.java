@@ -118,4 +118,25 @@ public class ReservationController {
 
         return "redirect:/mis-reservas";
     }
+
+    // GESTIONES DE ADMIN
+
+    // Vista CRUD usuarios - VER
+    @GetMapping("/admin/reservation")
+    public String showAdminUserInteface(HttpSession session, Model model) {
+        Boolean adminLogueado = (Boolean) session.getAttribute("adminLogueado");
+        if (adminLogueado == null || !adminLogueado) {
+            return "redirect:/admin/login";
+        }
+
+        model.addAttribute("reservationModels", reservationService.getAllReservation());
+        return "admin/reservation";
+    }
+
+    // Vista CRUD usuarios - ELIMINAR
+    @GetMapping("/admin/reservation/eliminar/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        reservationService.deleteReservation(id);
+        return "redirect:/admin/reservation";
+    }
 }
